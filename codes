@@ -1,0 +1,54 @@
+import random
+import itertools
+from itertools import product
+from itertools import zip_longest
+import math
+import operator
+
+a = list(range(1,53))
+# b = random.sample(a, 5)
+bbbbb=input()
+bbbbb=bbbbb.replace(" ",",")
+bbbbbb=tuple(map(int,bbbbb.split(",")))
+
+b=1,4,20,3,40
+b=bbbbbb
+bb=random.sample(b,5)
+bbb=list(itertools.permutations(b,5))
+
+c=[]
+
+for bbbb in bbb:
+    for i in range(len(bbbb)):
+        c_i=bbbb[i]
+        c.append(c_i)
+
+ops = {
+   "+": operator.add,
+   "-": operator.sub,
+   "*": operator.mul
+}
+
+sequence2=itertools.product(ops,repeat=4)
+d=[]
+f=[]
+e=[]
+count=0
+result_list=[]
+y=""
+y_list=[]
+for sequence in sequence2:
+    for cc in range(0,len(c)-1,5):
+        result3=[str(c[cc+0]),sequence[0],str(c[cc+1]),sequence[1],str(c[cc+2]),sequence[2],str(c[cc+3]),sequence[3],str(c[cc+4])]
+        result3="".join(result3)
+        result=eval(result3)
+        if -0.01<result-42<0.01:
+            y="YES"
+            break
+        else:
+            continue
+
+if len(y)>0:
+    print(y)
+else:
+    print("NO")
